@@ -6,7 +6,7 @@
 
 Sistema web desenvolvido em Django para catalogar e analisar a estrutura morfossintática de períodos. Este projeto demonstra a implementação da arquitetura MVT (Model-View-Template), modelagem de banco de dados relacional (ORM) e criação de um front-end dinâmico com DTL.
 
-Este projeto foi desenvolvido como avaliação acadêmica e agora faz parte do meu portfólio de desenvolvimento web.
+Este projeto foi desenvolvido como avaliação acadêmica.
 
 ---
 
