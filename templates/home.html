@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisador Sintático</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <header>
+        <h1>Meu Catálogo de Análise Sintática</h1>
+        <nav>
+            <a href="/admin/">Ir para o Painel Admin</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Períodos Cadastrados</h2>
+        
+        {% for item in lista_periodos %}
+            <div class="card-periodo">
+                <h3>{{ item.texto_completo }}</h3>
+                
+                <p>Este período tem {{ item.oracoes.count }} oração(ões).</p>
+                
+                <div class="oracoes-lista">
+                    {% for oracao in item.oracoes.all %}
+                        <div class="card-oracao">
+                            <strong>{{ oracao.texto_da_oracao }}</strong> 
+                            <small>({{ oracao.get_tipo_display }})</small>
+                            <ul>
+                                {% for comp in oracao.componentes.all %}
+                                    <li>
+                                        <em>{{ comp.get_tipo_componente_display }}:</em> 
+                                        {{ comp.texto_do_componente }}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% empty %}
+            <p>Nenhum período cadastrado ainda. 
+               Vá ao <a href="/admin/">Painel Admin</a> para adicionar um.
+            </p>
+        {% endfor %}
+        
+    </main>
+
+</body>
+</html>
